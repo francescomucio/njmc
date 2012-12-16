@@ -1,0 +1,70 @@
+<html>
+<head>
+	<LINK href="css/style.css" rel="stylesheet" type="text/css">
+	<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+	<script>window.jQuery || document.write('<script src="js/libs/jquery.min.js"><\/script>')</script>
+
+	<script type="text/javascript" src="http://platform.linkedin.com/in.js">
+	  api_key: jydwcmb4py8a
+	  onLoad: onLinkedInLoad
+	  authorize: true
+	</script>
+
+	<script>
+		function onLinkedInLoad() {
+			IN.Event.on(IN, "auth", onLinkedInAuth());
+			$('#welcome_wait').hide();
+			$('#welcome_unsigned').show();		 
+		}
+			
+		function onLinkedInAuth() {
+			IN.API.Profile("me").result(resultMe);
+		}
+		
+		function resultMe(profile){
+			member = profile.values[0];
+			window.location ='start.html?linkedin-id=' + member.id;
+		}
+	</script>
+</head>
+<body>
+
+
+<div id="content">
+	<div id="loginForm">
+		<div id="welcome_unsigned" style="display: none"> 
+
+			<h1 id="welcome_text">Welcome!</h1>
+
+			<p>So you want to stat to use "I'm not just my cv", we are very pleased. <br />
+			Just please authorize our website to read your Linkedin profile, we promise to not touch anything.</p>
+			<p>The staff and teabag</p>
+		</div>
+
+		<div id="welcome_signed"  style="display: none"> 
+			
+			<h1 id="welcome_text">Welcome!</h1>
+
+			<p>Just a sec.</p>
+		 
+		</div>
+
+		<div id="welcome_wait"  style="visibility: visible"> 
+			
+			<h1 id="welcome_text">Welcome!</h1>
+			
+			<p>Just a sec.</p>
+		 
+		</div>
+
+			<script type="IN/Login"> 
+				<form id="enterNJMCV" action="/start.html"> 
+				<input type="hidden" name="linkedin-id" value="<?js= id ?>" />
+				<input type="submit" name="submit" id="enterNJMCVsubmit" value="Enter"/>
+
+			</script>
+	</div>
+</div>
+</body>
+
+</html>

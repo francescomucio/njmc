@@ -1,0 +1,55 @@
+<div id="content">
+	<div id="intro">
+		<h1>This is what your (next) boss know about you.</h1>
+	</div>
+
+	<div id="thestuff">
+		<script type="IN/MemberData"  data-ids="me" data-fields="firstName, lastName, headline, pictureUrl, location:(name, country), industry">
+			<div id="businessCard">
+				<div id="picture">
+					<div id="picture-frame">
+						<?js if ($("me").pictureUrl) { ?>	
+							<img src="<?js= $("me").pictureUrl ?>" />
+						<?js } else { ?>
+							<p> Upload a photo, so we can see what you look like. </p>
+						<?js } ?>
+					</div>
+				</div>
+				<div id="data">
+					<div id="name">
+					<?js= $("me").firstName ?> <?js= $("me").lastName ?>
+					</div>
+					<div id="headline">
+					<?js= $("me").headline ?> 
+					</div>
+					<div id="locationIndustry">
+					<?js= $("me").location.name ?> | <?js= $("me").industry ?>
+					</div>				
+				</div>
+			</div>
+		</script>	
+		
+		<div id="currentBadges">
+			<div id="currentBadges_content" >
+				<div id="currentBadges_placeholder">Drop your badges here.</div>
+			</div>	
+		</div>
+		
+		
+		<div id="possibleBadges" >
+			<div id="possibleBadges_content">
+			</div>	
+		</div>
+		
+		<div id="button">
+				<div id="buttonSave" class="button" disabled=true onClick="onSave()">
+					Save
+				</div>
+				<div id="buttonCancel" class="button" disabled=true onClick="document.location.reload(true)">
+					Cancel
+				</div>	
+		</div>
+		
+	</div>
+
+</div>
